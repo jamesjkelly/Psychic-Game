@@ -6,98 +6,69 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <title>Bootstrap Basic Portfolio</title>
+    <title>Psychic Game</title>
 
     <!-- Boostrap Stylesheet -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
     <!-- Our own CSS stylesheet -->
-    <link rel="stylesheet" href="assets/css/styles.css" media="screen">
+    <link rel="stylesheet" href="assets/css/style.css" media="screen">
 
   </head>
 
-  <body>
-    <!-- Start of navbar -->
-    <nav class="navbar navbar-default">
-      <div class="container-fluid navbar-custom">
+  <body> 
+   
+<H1>The Psychic Game</H1>
+<p>Press a letter to start playing!</p>
+<div id="game">
 
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="row">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <div class="col-xs-12 phone-nav">
-              <a class="navbar-brand" href="#" id="logo">Your Name</a>
-            </div>
-          </div>
+</div>
 
-          <!-- Collect the nav links, forms, and other content for toggling -->
-          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav navbar-right navbar-right-custom">
-              <li><a href="contact.html">Contact</a></li>
-              <li><a href="portfolio.html">Portfolio</a></li>
-              <li><a href="index.html">About</a></li>
-            </ul>
-          </div><!-- /.navbar-collapse -->
-        </div>
-      </div><!-- /.container-fluid -->
-    </nav>
-    <!-- End of navbar -->
 
-    <!-- Start of content wrap -->
-    <div class="wrap">
-      <div class="container">
-        <section class="row">
-          <div class="col-md-8">
-            <article class="about-me-content">
-              <h1 class="about-me-header">About Me</h1>
-              <hr class="about-me-hr"/>
-              <img src="assets/imgs/natebeach.jpeg" alt="" id="nate-image"/>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-              <br />
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-            </article>
-          </div>
-          <div class="col-md-4">
+<script type="text/javascript">
+// Creates an array that lists out all of the options (Rock, Paper, or Scissors).
+var alphabet = ['a','b','c','d','e','f','g','h','i','j','k', 'l', 'm', 'n', 'o','p', 'q', 'r', 's', 't', 'u', 'v', 'w','x', 'y','z'] ;
 
-            <!-- Start of Connect With Me Area -->
-            <section id="connect-with-me-area">
-              <div class="connect-with-me-content">
-                <h1 class="connect-with-me-header">Connect With Me</h1>
-                <hr />
-                <div id="images">
-                  <img src="assets/imgs/github.png" alt="" class="connect-with-me-photo">
-                  <img src="assets/imgs/linkedin.png" alt="" class="connect-with-me-photo">
-                  <img src="assets/imgs/stackover2.png" alt="" class="connect-with-me-photo">
-                </div>
-              </div>
-            </section>
-            <!-- End of the Connect With Me Area -->
+// Creating variables 
+var wins = 0;
+var losses = 0;
+var gamesLeft = 9;
 
-          </div>
-        </section>
-      </div>
-    </div>
-    <!-- End of content wrap -->
+ // Randomly chooses a choice from the options array. This is the Computer's guess.
+var computerGuess = alphabet[Math.floor(Math.random() * alphabet.length)];
+console.log(computerGuess)
+    // This function is run whenever the user presses a key.
+    document.onkeyup = function(event) {
 
-    <!-- Start of footer -->
-    <footer class="footer">
-      <div class="two-toned-footer-color"></div>
-      <p class="text-muted text-muted-footer text-center">
-        &copy; Copyright 2017 Your Name
-      </p>
-    </footer>
-    <!-- End of footer -->
+      // Determines which key was pressed.
+      var userGuess = event.key.toLowerCase();
 
-    <!-- jQuery CDN -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+     console.log(userGuess)
+      // This logic determines the outcome of the game (win/loss/tie)
+      if (userGuess ===computerGuess){
+          wins++;
+          console.log('wins' + wins);
+        } else  {
+          gamesLeft--;
+          console.log('gamesLeft' + gamesLeft)
+        } if (gamesLeft ===0 ) {
+          losses++;
+          console.log('losses' + losses)
+        }
+  
+        
+        var html = 
+          "<p>Wins: " + wins + "</p>" +
+          "<p>Losses" + losses + "</p>" +
+          "<p>Games Left: " + gamesLeft + "</p>" +
+          "<p>Your Guesses so far: " + userGuess + "</p>";
 
-    <!-- Bootstrap CDN -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-  </body>
-
+        // Set the inner HTML contents of the #game div to our html string
+        document.querySelector("#game").innerHTML = html;
+      
+     }
+  </script>
+ 
+ 
+</body>
 </html>
