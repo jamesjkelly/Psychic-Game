@@ -33,6 +33,7 @@ var alphabet = ['a','b','c','d','e','f','g','h','i','j','k', 'l', 'm', 'n', 'o',
 var wins = 0;
 var losses = 0;
 var gamesLeft = 9;
+var keyGuess =[''];
 
  // Randomly chooses a choice from the options array. This is the Computer's guess.
 var computerGuess = alphabet[Math.floor(Math.random() * alphabet.length)];
@@ -41,10 +42,14 @@ console.log(computerGuess)
     document.onkeyup = function(event) {
 
       // Determines which key was pressed.
-      var userGuess = event.key.toLowerCase();
+      userGuess = event.key.toLowerCase();
+      
+     keyGuess.push(userGuess);
+     console.log(userGuess);
+     console.log(keyGuess);
 
-     console.log(userGuess)
-      // This logic determines the outcome of the game (win/loss/tie)
+
+      // This logic determines the outcome of The game (win/loss/tie)
       if (userGuess ===computerGuess){
           wins++;
           console.log('wins' + wins);
@@ -55,13 +60,13 @@ console.log(computerGuess)
           losses++;
           console.log('losses' + losses)
         }
-  
+         
         
         var html = 
           "<p>Wins: " + wins + "</p>" +
-          "<p>Losses" + losses + "</p>" +
+          "<p>Losses: " + losses + "</p>" +
           "<p>Games Left: " + gamesLeft + "</p>" +
-          "<p>Your Guesses so far: " + userGuess + "</p>";
+          "<p>Your Guesses so far: " + keyGuess + "</p>";
 
         // Set the inner HTML contents of the #game div to our html string
         document.querySelector("#game").innerHTML = html;
